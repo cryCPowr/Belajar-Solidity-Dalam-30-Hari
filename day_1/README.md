@@ -145,3 +145,44 @@ di sini saya menambahkan `struct Orang` yang memuat data dengan nama orang , lal
 pada bagian ini saya memberikan fungsi `tambahOrang` adalah fungsi yang menambahkan orang baru ke kelompok yang di dalam nya terdapat struktur dari `struct Orang` yang memiliki argumen `_namaDepan` dan `_namaBelakang` serta saya juga menambahkan string `memory` untuk menyimpan nya
 ### Penjelasan Logika dan Alur Kontrak Pintar V4
 Logika dari kontrak ini sederhana: pengguna dapat menambahkan orang baru ke dalam kelompok dengan memanggil fungsi tambahOrang(), yang akan menambahkan struktur data Orang baru ke array kelompok dan meningkatkan jumlah anggota kelompok. Karena array kelompok dideklarasikan sebagai variabel publik, setiap orang dapat melihat daftar anggota kelompok. lalu Alur kerja pada kontrak ini adalah pengguna memanggil fungsi tambahOrang() dengan memberikan nama depan dan belakang orang yang ingin ditambahkan. Setelah fungsi dijalankan, struktur Orang baru ditambahkan ke array kelompok dan jumlah anggota kelompok ditingkatkan. Jumlah anggota kelompok dan daftar anggota kelompok dapat diakses oleh siapa saja yang memiliki akses ke kontrak ini.
+## Kontrak Versi 5
+### Penjelasan Penulisan Kontrak Pintar
+Kontrak versi 5 ini adalah kontrak sederhana yang menggunakan fitur `mapping` pada Solidity, Mapping sendiri adalah salah satu tipe data di Solidity yang berguna untuk menghubungkan antara dua nilai, yaitu kunci dan nilai. Pada dasarnya, mapping memetakan suatu nilai kunci ke nilai yang berbeda. Mapping dapat digunakan untuk mempercepat akses data dan pengambilan keputusan pada suatu kontrak pintar.. Kontrak ini memiliki fungsi `tambahOrang` dan `hapusOrang` yang memungkinkan kita untuk menambahkan data orang baru dan menghapus data orang yang sudah ada dari `mapping`. di kontrak ini juga saya memakai `struct Orang` yang di dalamnya terdpat variable `_id`, `_namaDepan`, dan `_namaBelakang` lalu saya juga menambahkan variable public `jumlahKelompok` serta menambahkan fungsi `function tambahOrang` dan `function hapusOrang`, berikut adalah penulisan dari semua yang ada di kontrak versi 5
+##### variable public `jumlahKelompok` tertulis pada bagian ini:
+```
+uint256 public jumlahKelompok = 0;
+```
+di dalam penulisan ini saya menggunakan `uint256` yang mendeklarasikan integral pada `jumlahKelompok` yang saya sudah saya atur `0` di saat kontrak ini di buat serta memberikan akses `public` agar dapat di akses oleh semua orang
+##### Penerapan `mapping` tertulis pada bagian ini:
+```
+mapping(uint => Orang) public Kelompok;
+```
+pada penulisan ini kita menerapkan `mapping` dan kita juga mendeklrasikan `Kelompok` sebagai sebuah `mapping` yang memiliki nilai tipe data atau kunci `uint` dan sebagai kunci , lalu saya juga menambahkan nilai `Orang` yang berkaitan pada kunci `uint` karna itu adalah pengguanaan `mapping` serta menambahkan `public` agar semua orang dapat mengakses variable `Kelompok` 
+##### Penerapan `struct Orang` tertulis pada bagian ini:
+```
+   struct Orang {
+        uint _id;
+        string _namaDepan;
+        string _namaBelakang;
+    }
+```
+di dalam penulisan ini saya menuliskan `struct Orang` yang berisi 3 variable yaitu `_id` yang di mana variable ini untuk mengidentifikasikan setiap Orang yang ada di dalam `mapping` `Kelompok` dan saya juga memakai tipe data `uint` karena hanya menampilkan integrial/bilangan bulat saja , `_namaDepan` ini untuk menyimpan sebuah nama depan maka dari itu saya menggunakan tipe data `string` agar dapat menerima angka dan huruf, dan `_namaBelakang` ini juga sama seperti sebelum nya di mana ini untuk menyimpan nama belakang dan juga menggunakan tipe data `string` agar dapat menerima angka dan huruf
+##### fungsi `tambahOrang` tertulis pada bagian ini:
+```
+    function tambahOrang(string memory _namaDepan, string memory _namaBelakang) public {
+        jumlahKelompok += 1;
+        Kelompok[jumlahKelompok] = Orang(jumlahKelompok, _namaDepan, _namaBelakang);
+    }
+```
+pada bagian fungsi `tambahOrang` saya memakai tipe data `string` untuk menerima dan mengembalikan angka atau huruf dan `memory` untuk menyimpan nya serta saya juga menerima dua parameter yaitu `namaDepan` untuk memastikan siapa nama depan nya dan variable `namaBelakang` untuk memastikan nama belakang nya serta memberikan `public` agar dapat di akses semua orang, lalu di saat sudah menambahkan/memastikan orang masuk kedalam `mapping` pada `Kelompok` yang akan meningkatkan nilai dari variable `jumlahKelompok` dengan nilai `Orang` yang terdiri dari `_namaDepan` dan `_namaBelakang`.
+##### fungsi `hapusOrang` tertulis pada bagian ini:
+```
+    function hapusOrang(uint _id) public {
+        delete Kelompok[_id];
+        jumlahKelompok -= 1;
+    }
+```
+pada fungsi `hapusOrang` di sini saya hanya menerima bilangan bulat karena saya meminta parameter `_id` yang bertipe data `uint` lalu saya juga menerapkan `public` agar semua orang dapat mengakses fungsi ini , lalu saya juga menambahkan kunci `delete` pada fungsi `hapusOrang` yang dimana akan menghapus `mapping` yang sudah di deklarasikan sebagai `Kelempok` yang memiliki kunci `_id`, lalu pada penulisan `jumlahKelompok -= 1;` itu menunjukan bahwa setiap kunci `delete` di panggil melalui fungsi `hapusOrang` akan berkurang 1
+
+### Penjelasan Logika dan Alur Kontrak Pintar V5
+Kontrak ini memiliki alur kerja yang sederhana. Saat fungsi tambahOrang dipanggil, data orang baru ditambahkan ke dalam mapping Kelompok, dan variabel jumlahKelompok ditingkatkan. Saat fungsi hapusOrang dipanggil, data orang dihapus dari mapping Kelompok, dan variabel jumlahKelompok dikurangi.
