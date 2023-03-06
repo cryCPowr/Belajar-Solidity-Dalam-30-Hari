@@ -74,3 +74,43 @@ uint256 public uint256Saya = 9999;
 Variabel state terakhir adalah `uint256Saya`, yang dideklarasikan sebagai variabel unsigned integer publik dengan ukuran 256 bit. Ini berarti variabel ini dapat mewakili bilangan bulat positif atau nol dengan rentang yang sangat besar. Variabel ini juga dapat dibaca dari luar kontrak.
 ### Penjelasan Logika dan Alur Kontrak Pintar V2
 ketika pertma kali kontrak ini dibuat, setiap variabel state diinisialisasi dengan nilai defaultnya (0 untuk tipe integer dan boolean false untuk tipe boolean). Namun, nilai variabel `stringNilai` diinisialisasi dengan string `nilaiSaya` yang telah ditentukan.
+
+## Kontrak Versi 3
+### Penjelasan Penulisan Kontrak Pintar
+Kontrak Versi 3 adalah kontrak sederhana yang menunjukkan bagaimana cara menggunakan tipe data `enum` dalam Solidity. `enum` adalah tipe data yang digunakan untuk mendefinisikan serangkaian konstanta bernama yang dapat diakses dengan mudah di dalam kontrak. pada kontrak ini saya mendefinisikan tiga konstanta bernama dalam `enum Perjalan`, yaitu `Menunggu`, `Siap`, dan `Berjalan`. Konstanta-konstanta ini merepresentasikan tiga status perjalanan yang mungkin terjadi. saya juga mendeklarasikan variabel state publik dengan nama `perjalanan`, yang memiliki tipe data `Perjalan` lalu saya juga menulis Pada konstruktor, variabel state `perjalanan` diinisialisasi dengan status `Menunggu` lalu Selanjutnya, kita mendefinisikan dua fungsi pada kontrak ini. Pertama, fungsi `silahkanBerjalan()`, yang akan mengubah status `perjalanan` menjadi `Berjalan`. Kedua, fungsi `sudahBerjalan()`, yang akan mengembalikan nilai boolean true jika status `perjalanan` saat ini adalah `Berjalan`, dan false jika tidak. sebagai penjelasan agar mudah di pahami mari lanjutkan kepada penulisannya
+##### tipe data enum `enum Perjalan` tertulis pada bagian ini:
+```
+    enum Perjalan { Menunggu, Siap, Berjalan }
+```
+pada penulisan ini sebagai saya kasih tahu sebelum nya saya menambahkan tipe data di dalam `enum perjalan` yaitu `Menunggu`, `Siap`, dan `Berjalan` untuk mempresentasikan status dari `enum perjalan`
+##### variabel state publik dengan nama `perjalanan` tertulis pada bagian ini:
+```
+Perjalan public perjalanan;
+```
+pada penulisan ini kita memberi tahukan bahwa variable publik `perjalanan` adalah tipe data dari `Perjalan` yang akan menyimpan semua status yang ada di dalam tipe data `Perjalan`
+##### mendeklarasikan Kontruktor Variable State `perjalanan` tertulis pada bagian ini:
+```
+    constructor() {
+        perjalanan = Perjalan.Menunggu;
+    }
+```
+pada penulisan ini kita juga memberi tahu bahwa saat pertama kali kontrak ini di buat status dari variable `perjalanan` adalah `Menunggu`
+##### fungsi `silahkanBerjalan()` tertulis pada bagian ini:
+```
+    function silahkanBerjalan() public {
+        perjalanan = Perjalan.Berjalan;
+    }
+```
+pada penulisan ini saya memberikan fungsi `silahkanBerjalan()` untuk mengubah status variable `perjalanan` yang sebelum nya `menunggu` menjadi `Berjalan`
+##### fungsi `sudahBerjalan()` tertulis pada bagian ini:
+```
+    function sudahBerjalan() public view returns(bool) {
+        return perjalanan == Perjalan.Berjalan;
+    }
+```
+pada penulisan ini saya memberikan fungsi `sudahBerjalan()` akan memberitahukan bahwa jika variable `perjalanan` sudah `Berjalan` maka akan memberikan/mengembalikan nilai boolean `true` jika status `perjalanan` sudah `Berjalan` lalu jika tidak atau masih dalam status `Menunggu` maka akan `false`
+### Penjelasan Logika dan Alur Kontrak Pintar V3
+ketika kontrak ini dibuat, status `perjalanan` diinisialisasi dengan nilai `Menunggu`. Ketika pengguna memanggil fungsi `silahkanBerjalan()`, status perjalanan diubah menjadi `Berjalan`. Pengguna juga dapat memanggil fungsi `sudahBerjalan()` untuk memeriksa apakah status `perjalanan` saat ini adalah `Berjalan` atau `Menunggu`.
+
+## Kontrak Versi 4
+### Penjelasan Penulisan Kontrak Pintar
