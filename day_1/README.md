@@ -1,4 +1,13 @@
 # Belajar-Solidity-Hari-1
+## Pengenalan Solidity dan Blockchain
+Solidity adalah bahasa pemrograman yang digunakan untuk mengembangkan aplikasi pada platform Ethereum. Solidity dirancang untuk membuat smart contract, yang merupakan program komputer yang dapat dieksekusi secara otomatis dan berjalan di dalam jaringan Ethereum.
+
+Smart contract yang ditulis menggunakan Solidity dapat digunakan untuk membuat berbagai macam aplikasi, termasuk aplikasi keuangan, game, dan sistem voting yang terdesentralisasi. Solidity memiliki sintaks yang mirip dengan JavaScript dan dirancang untuk memudahkan pengembangan smart contract.
+
+Sedangkan Blockchain adalah teknologi yang digunakan untuk membuat database terdistribusi dan terdesentralisasi. Blockchain memungkinkan informasi untuk disimpan secara aman dan transparan tanpa adanya otoritas sentral. Dalam jaringan blockchain, setiap transaksi disimpan di dalam blok, dan setiap blok dihubungkan satu sama lain untuk membentuk rantai blok (blockchain).
+
+Blockchain pertama kali diperkenalkan sebagai teknologi yang digunakan untuk mendukung transaksi bitcoin. Namun, teknologi blockchain sekarang digunakan dalam berbagai macam aplikasi, termasuk perbankan, asuransi, dan logistik. Blockchain sangat aman karena informasi yang disimpan di dalamnya tidak dapat diubah atau dihapus secara sepihak, dan transaksi dalam jaringan blockchain dapat dilakukan tanpa memerlukan pihak ketiga.
+
 oke baiklah kita bisa melihat kontrak pintar sederhana yang saya buat di folder `contracts` pada bagian `day 1` ini.
 baiklah kita langsung membahas saja dari KontrakV1 sampai KontrakV5 :
 
