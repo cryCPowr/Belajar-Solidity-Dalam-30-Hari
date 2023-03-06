@@ -21,9 +21,10 @@ contract SimulasiKontrakan {
             sisaKontrakan -= _unitKontrakan;
             cekKontrakan[sisaKontrakan] = Bisnis(_unitKontrakan, _namaPemilik);
         }
-        function tarikKontrakan(uint _unitKontrakan) public {
-        require(_unitKontrakan <= sisaKontrakan, "Jumlah unit kontrakan yang akan ditarik tidak dapat melebihi jumlah sisa kontrakan yang tersedia.");
-        delete cekKontrakan[_unitKontrakan];
-        sisaKontrakan += _unitKontrakan;
-        }
+            function tarikKontrakan(uint _unitKontrakan) public {
+            require(_unitKontrakan <= sisaKontrakan, "Jumlah unit kontrakan yang akan ditarik tidak dapat melebihi jumlah sisa kontrakan yang tersedia.");
+            require(sisaKontrakan + _unitKontrakan <= sisaKontrakan, "Jumlah unit kontrakan yang akan ditarik menyebabkan jumlah sisa kontrakan melebihi batas maksimum.");
+            delete cekKontrakan[_unitKontrakan];
+            sisaKontrakan += _unitKontrakan;
+}
 }
