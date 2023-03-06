@@ -37,7 +37,7 @@ contract SimulasiKontrakan {
 
     function tarikKontrakan(uint _unitKontrakan) public hanyaJuragan {
         require(_unitKontrakan <= sisaKontrakan, "Jumlah unit kontrakan yang akan ditarik tidak dapat melebihi jumlah sisa kontrakan yang tersedia.");
-        require(sisaKontrakan + _unitKontrakan <= 10, "Jumlah unit kontrakan yang akan ditarik menyebabkan jumlah sisa kontrakan melebihi batas maksimum.");
+        require(sisaKontrakan + _unitKontrakan <= sisaKontrakan, "Jumlah unit kontrakan yang akan ditarik menyebabkan jumlah sisa kontrakan melebihi batas maksimum.");
         delete daftarKontrakan[sisaKontrakan + 1];
         sisaKontrakan += _unitKontrakan;
     }
