@@ -38,3 +38,39 @@ Fungsi `ambilNilai` adalah fungsi publik yang mengembalikan nilai saat ini dari 
 Fungsi `aturNilai` adalah fungsi publik yang memungkinkan pengguna mengubah nilai variabel `nilai` dalam kontrak dengan memasukkan parameter `string` baru. Fungsi ini membutuhkan transaksi pada blockchain untuk dijalankan dan akan mengubah nilai variabel `nilai` di kontrak.
 ### Penjelasan Logika dan Alur Kontrak Pintar V1
 pertama kali ketika kontrak ini dibuat, variabel `nilai` diinisialisasi dengan nilai awal `nilaiSaya`. Kemudian pengguna dapat memanggil fungsi `ambilNilai` untuk membaca nilai saat ini dari variabel `nilai` lalu Jika pengguna ingin mengubah nilai variabel `nilai`, mereka dapat memanggil fungsi `aturNilai` dengan parameter string baru. Ini akan memicu transaksi pada blockchain yang akan mengubah nilai variabel `nilai` dalam kontrak.
+
+## Kontrak Versi 2
+### Penjelasan Penulisan Kontrak Pintar
+Kontrak Versi 2 adalah kontrak sederhana yang menunjukkan berbagai tipe data variabel state yang berbeda dan bagaimana cara mendeklarasikannya pada kontrak yang memiliki enam variabel state yang berbeda dengan tipe data yang berbeda, pada variable pertama adalah `stringNilai`, variable kedua adalah `booleanSaya`, variable ketiga adalah `intSaya`, variable keempat adalah `uintSaya`, variable kelima adalah `uint8Saya`,variable keenam adalah `uint256Saya` di dalam penulisan pada versi kedua ini Dalam kontrak ini, saya memfokuskan agar pengguna dapat membaca nilai dari setiap variabel state yang berbeda dari luar kontrak dengan menggunakan fungsi getter otomatis yang disediakan oleh Solidity. Namun,saya tidak menambahkan fungsi setter yang disediakan didalam kontrak ini, sehingga pengguna tidak dapat mengubah nilai variabel state dari luar kontrak.
+##### variable `stringNilai` tertulis pada bagian ini:
+```
+string public stringNilai = "nilaiSaya";
+```
+Variabel state pertama adalah `stringNilai`, yang dideklarasikan sebagai variabel string publik. Ini berarti bahwa nilai dari variabel ini dapat dibaca dari luar kontrak dan dapat diakses melalui fungsi getter otomatis yang disediakan oleh Solidity.
+##### variable `booleanSaya` tertulis pada bagian ini:
+```
+bool public booleanSaya = true;
+```
+Variabel state kedua adalah `booleanSaya`, yang dideklarasikan sebagai variabel boolean publik. Ini juga berarti bahwa nilai variabel dapat dibaca dari luar kontrak dan dapat diakses melalui fungsi getter otomatis.
+##### variable `intSaya` tertulis pada bagian ini:
+```
+int public intSaya = -1;
+```
+Variabel state ketiga adalah `intSaya`, yang dideklarasikan sebagai variabel integer publik dengan tanda (-). Ini berarti variabel ini dapat mewakili bilangan bulat negatif atau nol. Variabel ini juga dapat dibaca dari luar kontrak.
+##### variable `uintSaya` tertulis pada bagian ini:
+```
+uint public uintSaya = 1;
+```
+Variabel state keempat adalah `uintSaya`, yang dideklarasikan sebagai variabel unsigned integer publik. Ini berarti variabel ini hanya dapat mewakili bilangan bulat positif atau nol. Variabel ini juga dapat dibaca dari luar kontrak.
+##### variable `uint8Saya` tertulis pada bagian ini:
+```
+uint8 public uint8Saya = 8;
+```
+Variabel state kelima adalah `uint8Saya`, yang dideklarasikan sebagai variabel unsigned integer publik dengan ukuran 8 bit. Ini berarti variabel ini hanya dapat mewakili bilangan bulat positif atau nol dari rentang 0 hingga 255. Variabel ini juga dapat dibaca dari luar kontrak.
+##### variable `uint256Saya` tertulis pada bagian ini:
+```
+uint256 public uint256Saya = 9999;
+```
+Variabel state terakhir adalah `uint256Saya`, yang dideklarasikan sebagai variabel unsigned integer publik dengan ukuran 256 bit. Ini berarti variabel ini dapat mewakili bilangan bulat positif atau nol dengan rentang yang sangat besar. Variabel ini juga dapat dibaca dari luar kontrak.
+### Penjelasan Logika dan Alur Kontrak Pintar V2
+ketika pertma kali kontrak ini dibuat, setiap variabel state diinisialisasi dengan nilai defaultnya (0 untuk tipe integer dan boolean false untuk tipe boolean). Namun, nilai variabel `stringNilai` diinisialisasi dengan string `nilaiSaya` yang telah ditentukan.
