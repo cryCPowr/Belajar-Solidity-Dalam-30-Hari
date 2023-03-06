@@ -219,5 +219,5 @@ pada bagian ini saya memberikan fungsi `tambahOrang` adalah fungsi yang menambah
 Logika dari kontrak ini sederhana: pengguna dapat menambahkan orang baru ke dalam kelompok dengan memanggil fungsi tambahOrang(), yang akan menambahkan struktur data Orang baru ke array kelompok dan meningkatkan jumlah anggota kelompok. Karena array kelompok dideklarasikan sebagai variabel publik, setiap orang dapat melihat daftar anggota kelompok. lalu Alur kerja pada kontrak ini adalah pengguna memanggil fungsi tambahOrang() dengan memberikan nama depan dan belakang orang yang ingin ditambahkan. Setelah fungsi dijalankan, struktur Orang baru ditambahkan ke array kelompok dan jumlah anggota kelompok ditingkatkan. Jumlah anggota kelompok dan daftar anggota kelompok dapat diakses oleh siapa saja yang memiliki akses ke kontrak ini.
 
 
-# Sesi Pembuatan yang menggabungkan semua dan menambahkan sedikit bumbu
-lanjut saja silahkan klik [sesi pembuatan](https://github.com)
+# Sesi Pembelajaran yang menggabungkan semua versi kontrak pintar pada hari pertama dan menambahkan sedikit bumbu
+lanjut saja silahkan klik [sesi pembuatan]([https://github.com](https://github.com/cryCPowr/Belajar-Solidity-Dalam-30-Hari/tree/main/day_1/contracts))
