@@ -114,3 +114,34 @@ ketika kontrak ini dibuat, status `perjalanan` diinisialisasi dengan nilai `Menu
 
 ## Kontrak Versi 4
 ### Penjelasan Penulisan Kontrak Pintar
+Kontrak Versi 4 ini adalah Kontrak yang menggunakan struktur data struct untuk membuat kelompok orang di dalam penulisan kontrak ini ada 3 bagian yaitu 
+##### pertama Deklarasi variabel yang saya tulis sebagai `Orang[] public kelompok` dan `uint256 public jumlahKelompok`
+##### kedua Deklarasi struct data yang saya tulis sebagai `struct Orang { string _namaDepan; string _namaBelakang; }`
+##### ketiga Deklarasi Fungsi yang saya tulis sebagai `function tambahOrang(string memory _namaDepan, string memory _namaBelakang) public`
+
+berikut adalah pemahaman lebih lanjut dari penulisannya
+
+##### Deklarasi variabel tertulis pada bagian ini:
+```
+    Orang[] public kelompok;
+    uint256 public jumlahKelompok;
+```
+di sini saya memberi tahu bahwa variable `kelompok` adalah array yang berisi struktur data yang di ambil dari `Orang[]` dan saya juga menuliskan `public` yang dimana ini dapat di akses oleh orang lain atau publik, lalu kenapa variable berisikan array struktur? karena pada `Orang[]` terdapat `[]` . lalu pada penulisan ke dua yang menjelaskan bahwa variable `jumlahKelompok` variable yang berisikan integer 256 bit yang di ambil dari data `uint256` yang mendeklarasikan  jumlah anggota dalam kelompok , serta menggunakan `public` agar dapat di akses oleh semua orang atau publik.
+##### Deklarasi struct data tertulis pada bagian ini:
+```
+    struct Orang {
+        string _namaDepan;
+        string _namaBelakang;
+    }
+```
+di sini saya menambahkan `struct Orang` yang memuat data dengan nama orang , lalu saya juga menambahkan string `_namaDepan` dan string`_namaBelakang` untuk mengisi data yang di kirimkan untuk `struct Orang`
+##### fungsi `function tambahOrang` tertulis pada bagian ini:
+```
+    function tambahOrang(string memory _namaDepan, string memory _namaBelakang) public {
+        kelompok.push(Orang(_namaDepan, _namaBelakang));
+        jumlahKelompok += 1;
+    }
+```
+pada bagian ini saya memberikan fungsi `tambahOrang` adalah fungsi yang menambahkan orang baru ke kelompok yang di dalam nya terdapat struktur dari `struct Orang` yang memiliki argumen `_namaDepan` dan `_namaBelakang` serta saya juga menambahkan string `memory` untuk menyimpan nya
+### Penjelasan Logika dan Alur Kontrak Pintar V4
+Logika dari kontrak ini sederhana: pengguna dapat menambahkan orang baru ke dalam kelompok dengan memanggil fungsi tambahOrang(), yang akan menambahkan struktur data Orang baru ke array kelompok dan meningkatkan jumlah anggota kelompok. Karena array kelompok dideklarasikan sebagai variabel publik, setiap orang dapat melihat daftar anggota kelompok. lalu Alur kerja pada kontrak ini adalah pengguna memanggil fungsi tambahOrang() dengan memberikan nama depan dan belakang orang yang ingin ditambahkan. Setelah fungsi dijalankan, struktur Orang baru ditambahkan ke array kelompok dan jumlah anggota kelompok ditingkatkan. Jumlah anggota kelompok dan daftar anggota kelompok dapat diakses oleh siapa saja yang memiliki akses ke kontrak ini.
