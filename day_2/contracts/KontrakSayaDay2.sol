@@ -111,7 +111,7 @@ contract pembeli {
     }
 }
 
-Kontrak versi 5 yang membahas
+// Kontrak versi 5 yang membahas
 
 pragma solidity 0.8.19;
 
