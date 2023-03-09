@@ -27,9 +27,9 @@ pragma solidity 0.8.19;
 
 contract Agen {
     uint256 public jumlahBarang;
-    mapping(uint => Barang) public cekBarang;
     address public bos;
-
+    
+    mapping(uint => Barang) public cekBarang;
     modifier bosAgen(){
         require(msg.sender == bos);
         _;
@@ -108,5 +108,33 @@ contract pembeli {
         address payable dompetPayable = payable(dompet);
         dompetPayable.transfer(msg.value);
         emit pembelianKupon(msg.sender, 1);
+    }
+}
+
+Kontrak versi 5 yang membahas
+
+pragma solidity 0.8.19;
+
+contract kuponToken {
+    string public namaKupon;
+    mapping(address => uint256) public cekKupon;
+
+    function cetak() public {
+                cekKupon[msg.sender] ++ ;
+    }
+}
+contract penjual {
+    address payable dompet;
+    address public kupon;
+    constructor(address _dompet,  address _kupon) {
+        dompet = payable(_dompet);
+        kupon = _kupon;
+    }
+
+    function beliKupon() public payable {
+        kuponToken _kupon = kuponToken(address(kupon));
+        _kupon.cetak();
+        address payable dompetPayable = payable(dompet);
+        dompetPayable.transfer(msg.value);
     }
 }
